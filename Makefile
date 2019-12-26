@@ -1,2 +1,2 @@
 generate-bindings:
-	cd vendor; bindgen ../wrapper.h -o bindings.rs -- -I ./
+	bindgen wrapper.h -o src/bindings.rs --no-layout-tests -- -I ./vendor
