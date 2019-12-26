@@ -1,0 +1,13 @@
+[package]
+name = "export-struct"
+version = "0.1.0"
+authors = ["Rafael Caricio <rafael@caricio.com>"]
+edition = "2018"
+
+build = "build.rs"
+
+[dependencies]
+
+[build-dependencies]
+copy_dir = { version = "0.1.2" }
+
