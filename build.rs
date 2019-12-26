@@ -3,7 +3,7 @@ use std::env;
 
 use copy_dir;
 
-const LIB_NAME: &str = "sample";
+const LIB_NAME: &str = "quickjs";
 
 fn exists(path: impl AsRef<Path>) -> bool {
     PathBuf::from(path.as_ref()).exists()
@@ -12,11 +12,11 @@ fn exists(path: impl AsRef<Path>) -> bool {
 fn main() {
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
 
-    let code_dir = out_path.join("sample");
+    let code_dir = out_path.join("quickjs");
     if exists(&code_dir) {
         std::fs::remove_dir_all(&code_dir).unwrap();
     }
-    copy_dir::copy_dir("./vendor", &code_dir).expect("Could not copy sample directory");
+    copy_dir::copy_dir("./vendor", &code_dir).expect("Could not copy vendor directory");
 
     eprintln!("Building Makefile...");
     std::process::Command::new("wasimake")
