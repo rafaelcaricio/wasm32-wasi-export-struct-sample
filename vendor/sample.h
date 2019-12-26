@@ -15,6 +15,13 @@ enum {
 #define JS_MKVAL(tag, val) (XValue){ (XValueUnion){ .float64 = val }, tag }
 #define JS_EXCEPTION JS_MKVAL(JS_TAG_EXCEPTION, 0)
 
+typedef struct XMallocState {
+    size_t malloc_count;
+    size_t malloc_size;
+    size_t malloc_limit;
+    void *opaque; /* user opaque */
+} XMallocState;
+
 typedef struct XContext XContext;
 
 typedef union XValueUnion {

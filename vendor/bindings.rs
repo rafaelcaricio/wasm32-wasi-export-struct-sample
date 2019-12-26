@@ -93,43 +93,6 @@ pub struct max_align_t {
     pub __bindgen_padding_0: u64,
     pub __clang_max_align_nonce2: u128,
 }
-#[test]
-fn bindgen_test_layout_max_align_t() {
-    assert_eq!(
-        ::std::mem::size_of::<max_align_t>(),
-        32usize,
-        concat!("Size of: ", stringify!(max_align_t))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<max_align_t>(),
-        16usize,
-        concat!("Alignment of ", stringify!(max_align_t))
-    );
-    assert_eq!(
-        unsafe {
-            &(*(::std::ptr::null::<max_align_t>())).__clang_max_align_nonce1 as *const _ as usize
-        },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(max_align_t),
-            "::",
-            stringify!(__clang_max_align_nonce1)
-        )
-    );
-    assert_eq!(
-        unsafe {
-            &(*(::std::ptr::null::<max_align_t>())).__clang_max_align_nonce2 as *const _ as usize
-        },
-        16usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(max_align_t),
-            "::",
-            stringify!(__clang_max_align_nonce2)
-        )
-    );
-}
 pub type __u_char = ::std::os::raw::c_uchar;
 pub type __u_short = ::std::os::raw::c_ushort;
 pub type __u_int = ::std::os::raw::c_uint;
@@ -160,29 +123,6 @@ pub type __pid_t = ::std::os::raw::c_int;
 #[derive(Debug, Copy, Clone)]
 pub struct __fsid_t {
     pub __val: [::std::os::raw::c_int; 2usize],
-}
-#[test]
-fn bindgen_test_layout___fsid_t() {
-    assert_eq!(
-        ::std::mem::size_of::<__fsid_t>(),
-        8usize,
-        concat!("Size of: ", stringify!(__fsid_t))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<__fsid_t>(),
-        4usize,
-        concat!("Alignment of ", stringify!(__fsid_t))
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<__fsid_t>())).__val as *const _ as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(__fsid_t),
-            "::",
-            stringify!(__val)
-        )
-    );
 }
 pub type __clock_t = ::std::os::raw::c_long;
 pub type __rlim_t = ::std::os::raw::c_ulong;
@@ -233,6 +173,14 @@ pub const JS_TAG_EXCEPTION: _bindgen_ty_1 = 6;
 pub type _bindgen_ty_1 = u32;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
+pub struct XMallocState {
+    pub malloc_count: usize,
+    pub malloc_size: usize,
+    pub malloc_limit: usize,
+    pub opaque: *mut ::std::os::raw::c_void,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
 pub struct XContext {
     _unused: [u8; 0],
 }
@@ -244,82 +192,11 @@ pub union XValueUnion {
     pub ptr: *mut ::std::os::raw::c_void,
     _bindgen_union_align: u64,
 }
-#[test]
-fn bindgen_test_layout_XValueUnion() {
-    assert_eq!(
-        ::std::mem::size_of::<XValueUnion>(),
-        8usize,
-        concat!("Size of: ", stringify!(XValueUnion))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<XValueUnion>(),
-        8usize,
-        concat!("Alignment of ", stringify!(XValueUnion))
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<XValueUnion>())).int32 as *const _ as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(XValueUnion),
-            "::",
-            stringify!(int32)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<XValueUnion>())).float64 as *const _ as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(XValueUnion),
-            "::",
-            stringify!(float64)
-        )
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<XValueUnion>())).ptr as *const _ as usize },
-        0usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(XValueUnion),
-            "::",
-            stringify!(ptr)
-        )
-    );
-}
 #[repr(C)]
 #[derive(Copy, Clone)]
 pub struct XValue {
     pub u: XValueUnion,
     pub tag: i64,
-}
-#[test]
-fn bindgen_test_layout_XValue() {
-    assert_eq!(
-        ::std::mem::size_of::<XValue>(),
-        16usize,
-        concat!("Size of: ", stringify!(XValue))
-    );
-    assert_eq!(
-        ::std::mem::align_of::<XValue>(),
-        8usize,
-        concat!("Alignment of ", stringify!(XValue))
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<XValue>())).u as *const _ as usize },
-        0usize,
-        concat!("Offset of field: ", stringify!(XValue), "::", stringify!(u))
-    );
-    assert_eq!(
-        unsafe { &(*(::std::ptr::null::<XValue>())).tag as *const _ as usize },
-        8usize,
-        concat!(
-            "Offset of field: ",
-            stringify!(XValue),
-            "::",
-            stringify!(tag)
-        )
-    );
 }
 extern "C" {
     pub fn X_NewContext() -> *mut XContext;
