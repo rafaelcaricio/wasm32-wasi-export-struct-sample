@@ -1692,7 +1692,7 @@ extern "C" {
         input_len: usize,
         filename: *const ::std::os::raw::c_char,
         eval_flags: ::std::os::raw::c_int,
-    ) -> i64;
+    ) -> JSValue;
 }
 extern "C" {
     pub fn JS_EvalFunction(ctx: *mut JSContext, fun_obj: JSValue) -> JSValue;

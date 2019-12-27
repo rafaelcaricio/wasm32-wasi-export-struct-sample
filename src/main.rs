@@ -17,10 +17,6 @@ fn main() {
         let text = CStr::from_bytes_with_nul(text_str.as_bytes()).unwrap();
         let sec = CStr::from_bytes_with_nul("sec\0".as_bytes()).unwrap();
 
-        if ctx.is_null() {
-            println!("It is NULL");
-        }
-
         let val = JS_Eval(
             ctx,
             text.as_ptr(),
@@ -28,6 +24,7 @@ fn main() {
             sec.as_ptr(),
             JS_EVAL_TYPE_GLOBAL as i32
         );
-        println!("val.tag = {}", val);
+        println!("val.u.int32 = {}", val.u.int32);
+        println!("val.tag = {}", val.tag);
     }
 }
