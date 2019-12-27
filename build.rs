@@ -40,9 +40,6 @@ fn main() {
         panic!("Could not compile sample! {}", cmd.to_string());
     }
 
-    std::fs::copy("./vendor/bindings.rs", out_path.join("bindings.rs"))
-        .expect("Could not copy bindings.rs");
-
     // Instruct cargo to statically link quickjs.
     println!(
         "cargo:rustc-link-search=native={}",

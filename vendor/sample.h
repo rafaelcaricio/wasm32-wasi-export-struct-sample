@@ -35,6 +35,8 @@ typedef struct XValue {
     int64_t tag;
 } XValue;
 
+int JS_IsNumber(const XValue *v);
+
 XContext *X_NewContext();
 
 XValue X_Run(XContext *ctx, const char *input, size_t input_len,

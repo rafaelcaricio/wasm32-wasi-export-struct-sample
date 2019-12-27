@@ -199,6 +199,9 @@ pub struct XValue {
     pub tag: i64,
 }
 extern "C" {
+    pub fn JS_IsNumber(v: *const XValue) -> ::std::os::raw::c_int;
+}
+extern "C" {
     pub fn X_NewContext() -> *mut XContext;
 }
 extern "C" {
